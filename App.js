@@ -1,20 +1,69 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import StudentListScreen from "./Screen/StudentListScreen";
+import StudentInfoInputScreen from "./Screen/StudentInfoInputScreen";
+import ProgramInfoInputScreen from "./Screen/ProgramInfoInputScreen";
+import ChoiceInfoInputScreen from "./Screen/ChoiceInfoInputScreen";
+import StudentDetailScreen from "./Screen/StudentDetailScreen";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="StudentListScreen">
+        <Stack.Screen
+          name="StudentListScreen"
+          component={StudentListScreen}
+          options={{
+            headerBackVisible: false,
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StudentDetailScreen"
+          component={StudentDetailScreen}
+          options={
+            {
+              // headerBackVisible: false,
+              // headerShown: false,
+            }
+          }
+        />
+        <Stack.Screen
+          name="StudentInfoInputScreen"
+          component={StudentInfoInputScreen}
+          options={
+            {
+              // headerBackVisible: false,
+              // headerShown: false,
+            }
+          }
+        />
+        <Stack.Screen
+          name="ProgramInfoInputScreen"
+          component={ProgramInfoInputScreen}
+          options={
+            {
+              // headerBackVisible: false,
+              // headerShown: false,
+            }
+          }
+        />
+        <Stack.Screen
+          name="ChoiceInfoInputScreen"
+          component={ChoiceInfoInputScreen}
+          options={
+            {
+              // headerBackVisible: false,
+              // headerShown: false,
+            }
+          }
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
